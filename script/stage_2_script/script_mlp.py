@@ -37,8 +37,6 @@ if __name__ == '__main__':
     # Initialize Method_MLP
     # Parameters like hidden layers, learning rate, epochs etc., might be set within the class or passed here
     method_obj = Method_MLP('multi-layer perceptron', '')
-
-    # Initialize Result_Saver
     result_obj = Result_Saver('saver', '')
     result_obj.result_destination_folder_path = '../../result/stage_2_result/MLP_'
     result_obj.result_destination_file_name = 'prediction_result'
@@ -62,4 +60,3 @@ if __name__ == '__main__':
     # Accuracy score is printed; std_score might be 0 or NaN if only one run is performed
     print('MLP Accuracy: ' + str(mean_score) + ' +/- ' + str(std_score))
     print('************ Finish ************')
-    # ------------------------------------------------------
