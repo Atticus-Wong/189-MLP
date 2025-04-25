@@ -35,7 +35,9 @@ class Method_MLP(method, nn.Module):
         self.activation_func_2 = nn.ReLU()
         self.fc_layer_3 = nn.Linear(32, 10)
         # check here for nn.Softmax doc: https://pytorch.org/docs/stable/generated/torch.nn.Softmax.html
-        self.activation_func_3 = nn.Softmax(dim=1)
+        # self.activation_func_3 = nn.Softmax(dim=1)
+        # Using LogSoftmax + NLLLoss is often more numerically stable than Softmax + CrossEntropyLoss
+        self.activation_func_2 = nn.LogSoftmax(dim=1)
 
     # it defines the forward propagation function for input x
     # this function will calculate the output layer by layer
@@ -61,7 +63,9 @@ class Method_MLP(method, nn.Module):
         # check here for the torch.optim doc: https://pytorch.org/docs/stable/optim.html
         optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
         # check here for the nn.CrossEntropyLoss doc: https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html
-        loss_function = nn.CrossEntropyLoss()
+        # loss_function = nn.CrossEntropyLoss()
+        # Using NLLLoss with LogSoftmax output
+        loss_function = nn.NLLLoss()
         # for training accuracy investigation purpose
         accuracy_evaluator = Evaluate_Accuracy('training evaluator accuracy', '')
         f1_evaluator = Evaluate_F1('training evaluator f1', '')

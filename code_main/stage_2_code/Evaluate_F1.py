@@ -6,12 +6,13 @@ Concrete Evaluate class for a specific evaluation metrics
 # License: TBD
 
 from code_main.base_class.evaluate import evaluate
-from sklearn.metrics import f1_score, accuracy_score
+from sklearn.metrics import f1_score
 import numpy as np
 
 
-class Evaluate_Accuracy(evaluate):
+class Evaluate_F1(evaluate):
     data = None
-
+    
     def evaluate(self):
-        return accuracy_score(self.data['true_y'], self.data['pred_y'])
+        return f1_score(self.data['true_y'], self.data['pred_y'], average="weighted")
+        
