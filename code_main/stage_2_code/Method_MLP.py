@@ -18,7 +18,7 @@ class Method_MLP(method, nn.Module):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     data = None
     # it defines the max rounds to train the model
-    max_epoch = 200
+    max_epoch = 300
     # it defines the learning rate for gradient descent based optimizer for model learning
     learning_rate = 9e-4
 
@@ -33,9 +33,9 @@ class Method_MLP(method, nn.Module):
         self.fc_layer_1 = nn.Linear(784, 128).to(self.device)
         # check here for nn.ReLU doc: https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html
         self.activation_func_1 = nn.ReLU().to(self.device)
-        self.fc_layer_2 = nn.Linear(128, 128).to(self.device)
+        self.fc_layer_2 = nn.Linear(128, 96).to(self.device)
         self.activation_func_2 = nn.ReLU().to(self.device)
-        self.fc_layer_3 = nn.Linear(128, 32).to(self.device)
+        self.fc_layer_3 = nn.Linear(96, 32).to(self.device)
         self.activation_func_3 = nn.ReLU().to(self.device)
         self.fc_layer_4 = nn.Linear(32, 10).to(self.device)
         # check here for nn.Softmax doc: https://pytorch.org/docs/stable/generated/torch.nn.Softmax.html
