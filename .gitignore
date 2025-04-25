@@ -1,0 +1,4 @@
+.venv
+venv
+.idea
+data/stage_2_data/*
