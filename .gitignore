@@ -1,2 +1,4 @@
 data/stage_2_data/train.csv
 data/stage_2_data/test.csv
+
+code_main/__pycache__
