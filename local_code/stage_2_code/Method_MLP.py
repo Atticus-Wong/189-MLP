@@ -1,7 +1,6 @@
 '''
 Concrete MethodModule class for a specific learning MethodModule
 '''
-
 # Copyright (c) 2017-Current Jiawei Zhang <jiawei@ifmlab.org>
 # License: TBD
 
@@ -12,6 +11,8 @@ from torch import nn
 import numpy as np
 
 from local_code.stage_2_code.Evaluate_F1 import Evaluate_F1
+from code_main.stage_2_code.Evaluate_Precision import Evaluate_Precision
+from code_main.stage_2_code.Evaluate_Recall import Evaluate_Recall
 
 
 class Method_MLP(method, nn.Module):
@@ -69,8 +70,8 @@ class Method_MLP(method, nn.Module):
         # for training accuracy investigation purpose
         accuracy_evaluator = Evaluate_Accuracy('training evaluator accuracy', '')
         f1_evaluator = Evaluate_F1('training evaluator f1', '')
-        precision_evaluator = Evaluate_F1('training evaluator precision', '')
-        recall_evaluator = Evaluate_F1('training evaluator recall', '')
+        precision_evaluator = Evaluate_Precision('training evaluator precision', '')
+        recall_evaluator = Evaluate_Recall('training evaluator recall', '')
 
         # it will be an iterative gradient updating process
         # we don't do mini-batch, we use the whole input as one batch
